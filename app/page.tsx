@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
- 
+
+import { definedQuestions } from "@/data/preDefinedData";
+import { removeSpacesAndSpecialCharsAndLowerCase } from "@/utiils/clientUtiils";
 import ChatBot from "react-chatbotify";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -80,11 +82,26 @@ export default function Home() {
 
   const flow: any = {
     start: {
-      message: "Ask me anything !",
+      message: "Hi I'm your chatbot build by Rohan",
+      options: [
+        "Hello!",
+        "What is your name?",
+        "What time is it?",
+        "Tell me a joke!",
+        "What do you like to do?",
+        "Tell me a fun fact.",
+      ],
       path: "end",
     },
     end: {
-      component: (params: any) => chatEndPointCall(params),
+      component: (params: any) => {
+        const userInput: string = removeSpacesAndSpecialCharsAndLowerCase(params.userInput);
+        const findComonQuestions :any = definedQuestions.find((item)=> removeSpacesAndSpecialCharsAndLowerCase(item.question) === userInput)
+        if(findComonQuestions){
+          return findComonQuestions.answer
+        }
+        return chatEndPointCall(params);
+      },
       path: "end",
     },
   };
