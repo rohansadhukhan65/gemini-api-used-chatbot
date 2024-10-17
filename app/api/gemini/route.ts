@@ -1,7 +1,7 @@
 import { GEM_API } from "@/data/key";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-export const POST = async (req) => {
+export const POST = async (req:unknown) => {
   try {
     const { prompt } = await req.json();
     const genAI = new GoogleGenerativeAI(GEM_API);
