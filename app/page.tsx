@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import ChatBot from "react-chatbotify";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export default function Home() {
-  const chatEndPointCall = async (params) => {
+ 
+  const chatEndPointCall = async (params: any) => {
     try {
       console.log();
       const data = {
@@ -31,8 +33,10 @@ export default function Home() {
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
                     <SyntaxHighlighter
-                      {...rest}
+                      showLineNumbers
                       PreTag="div"
+                      className="codeStyle"
+                      useInlineStyles={true}
                       language={match[1]}
                     >
                       {String(children).replace(/\n$/, "")}
@@ -68,13 +72,13 @@ export default function Home() {
     botBubble: { dangerouslySetInnerHtml: true },
   };
 
-  const flow = {
+  const flow: any = {
     start: {
       message: "Ask me anything !",
       path: "end",
     },
     end: {
-      component: (params) => chatEndPointCall(params),
+      component: (params: any) => chatEndPointCall(params),
       path: "end",
     },
   };
