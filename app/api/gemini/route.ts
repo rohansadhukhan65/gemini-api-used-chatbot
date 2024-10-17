@@ -10,7 +10,7 @@ export const POST = async (req: Request) => {
 
     const { response } = await model.generateContent(prompt);
     console.log(JSON.stringify(response));
-    const myResponse: ApiResponse | undefined = response;
+    const myResponse: any = response;
     return Response.json({
       response: myResponse?.candidates[0]?.content?.parts[0],
     });
