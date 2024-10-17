@@ -4,13 +4,13 @@ import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export default function Home() {
-  const chatEndPointCall = async (params: any) => {
+  const chatEndPointCall = async (params) => {
     try {
       console.log()
       const data = {
         prompt: `${params.userInput}`,
       };
-      const responseData: any = await fetch("/api/gemini", {
+      const responseData = await fetch("/api/gemini", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -19,8 +19,8 @@ export default function Home() {
       });
 
       if (responseData.ok) {
-        const { response }: any = await responseData.json();
-        const { text }: any = response;
+        const { response } = await responseData.json();
+        const { text } = response;
 
         return (
           <div className="chat-response">
@@ -73,7 +73,7 @@ export default function Home() {
       path: "end",
     },
     end: {
-      component: (params: any) => chatEndPointCall(params),
+      component: (params) => chatEndPointCall(params),
       path: "end",
     },
   };
