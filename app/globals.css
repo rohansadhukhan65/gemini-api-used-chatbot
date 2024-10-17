@@ -2,26 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.chat-response {
+  text-wrap: balance;
+  background-color: #e8e8e8;
+  overflow: hidden;
+  margin: 17px;
+  border-radius: 33px;
+  padding: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
+.chat-response * {
     text-wrap: balance;
-  }
+}
+
+
+.rcb-chat-window{
+    width: 90vw !important;
 }
