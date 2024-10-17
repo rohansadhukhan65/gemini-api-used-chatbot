@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 export default function Home() {
   const chatEndPointCall = async (params) => {
     try {
-      console.log()
+      console.log();
       const data = {
         prompt: `${params.userInput}`,
       };
@@ -24,20 +24,19 @@ export default function Home() {
 
         return (
           <div className="chat-response">
-            {" "}
             <Markdown
-              children={`${text}`}
               components={{
                 code(props) {
-                  const { children, className, node, ...rest } = props;
+                  const { children, className, ...rest } = props;
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
                     <SyntaxHighlighter
                       {...rest}
                       PreTag="div"
-                      children={String(children).replace(/\n$/, "")}
                       language={match[1]}
-                    />
+                    >
+                      {String(children).replace(/\n$/, "")}
+                    </SyntaxHighlighter>
                   ) : (
                     <code {...rest} className={className}>
                       {children}
@@ -45,7 +44,9 @@ export default function Home() {
                   );
                 },
               }}
-            />
+            >
+              {text}
+            </Markdown>
           </div>
         );
       } else {
