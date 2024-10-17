@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import { title } from "process";
 import ChatBot from "react-chatbotify";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export default function Home() {
- 
   const chatEndPointCall = async (params: any) => {
     try {
-      console.log();
       const data = {
         prompt: `${params.userInput}`,
       };
@@ -64,12 +63,19 @@ export default function Home() {
   const settings = {
     general: {
       embedded: true,
+      primaryColor: "#000",
+      secondaryColor: "#000",
+      showFooter: false,
+    },
+    header: {
+      title: "Gemini Bot",
+    },
+    notification: {
+      disabled: true,
     },
     chatHistory: {
       disabled: true,
     },
-    userBubble: { dangerouslySetInnerHtml: true },
-    botBubble: { dangerouslySetInnerHtml: true },
   };
 
   const flow: any = {

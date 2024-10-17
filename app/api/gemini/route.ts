@@ -10,7 +10,6 @@ export const POST = async (req: Request) => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const data : any = await model.generateContent(prompt);
-    console.log(JSON.stringify(data))
     const myResponse = data.response.candidates[0].content.parts[0];
     return Response.json({
       response: myResponse,
