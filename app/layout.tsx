@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Gemini ChatBot",
-  description: "Gemini Chatbot Created by Rohan Sadhukhan",
+  title: "Personalized Gemini ChatBot",
+  description: "Personalized Gemini Chatbot Created by Rohan Sadhukhan",
 };
 
 export default function RootLayout({
